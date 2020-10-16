@@ -1,0 +1,162 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+
+	<modelVersion>4.0.0</modelVersion>
+	<groupId>org.epragati</groupId>
+	<artifactId>epragati-reg-security</artifactId>
+	<packaging>jar</packaging>
+	<name>Epragati Registration Security</name>
+	<description>Epragati Registration Security</description>
+	<parent>
+		<groupId>org.springframework</groupId>
+		<artifactId>epragati-rta-reg</artifactId>
+		<version>1.0.0</version>
+	</parent>
+
+
+
+	<properties>
+		<activiti.version>6.0.0</activiti.version>
+		<ePragati.version>1.0.0</ePragati.version>
+		<java.version>1.8</java.version>
+		<jjwt.version>0.7.0</jjwt.version>
+	</properties>
+
+
+	<dependencies>
+
+		<dependency>
+			<groupId>org.apache.commons</groupId>
+			<artifactId>commons-io</artifactId>
+			<version>1.3.2</version>
+		</dependency>
+
+
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-web</artifactId>
+		</dependency>
+
+		<dependency>
+			<groupId>com.h2database</groupId>
+			<artifactId>h2</artifactId>
+		</dependency>
+
+		<!-- We can replace this -->
+		<dependency>
+			<groupId>com.fasterxml.jackson.core</groupId>
+			<artifactId>jackson-core</artifactId>
+		</dependency>
+
+		<!-- Epragati Dependencies -->
+
+		<dependency>
+			<groupId>org.epragati</groupId>
+			<artifactId>epragati-reg-vo</artifactId>
+			<version>${ePragati.version}</version>
+		</dependency>
+
+		<dependency>
+			<groupId>org.epragati</groupId>
+			<artifactId>epragati-reg-util</artifactId>
+			<version>${ePragati.version}</version>
+		</dependency>
+
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-data-jpa</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-security</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-web</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-web-services</artifactId>
+		</dependency>
+
+		<dependency>
+			<groupId>io.jsonwebtoken</groupId>
+			<artifactId>jjwt</artifactId>
+			<version>${jjwt.version}</version>
+		</dependency>
+
+		<dependency>
+			<groupId>org.postgresql</groupId>
+			<artifactId>postgresql</artifactId>
+			<scope>runtime</scope>
+		</dependency>
+
+
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-tomcat</artifactId>
+			<scope>provided</scope>
+		</dependency>
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-test</artifactId>
+			<scope>test</scope>
+		</dependency>
+		<dependency>
+			<groupId>org.epragati</groupId>
+			<artifactId>epragati-reg-dao</artifactId>
+			<version>1.0.0</version>
+		</dependency>
+
+		<!-- Epragati Dependencies (End) -->
+	</dependencies>
+
+	<profiles>
+		<profile>
+			<id>local</id>
+			<properties>
+				<active.profile>local</active.profile>
+			</properties>
+			<activation>
+				<activeByDefault>true</activeByDefault>
+			</activation>
+		</profile>
+		<profile>
+			<id>dummy</id>
+			<properties>
+				<active.profile>dummy</active.profile>
+			</properties>
+		</profile>
+		<profile>
+			<id>dev</id>
+			<properties>
+				<active.profile>dev</active.profile>
+			</properties>
+		</profile>
+		<profile>
+			<id>qa</id>
+			<properties>
+				<active.profile>qa</active.profile>
+			</properties>
+		</profile>
+		<profile>
+			<id>preprod</id>
+			<properties>
+				<active.profile>preprod</active.profile>
+			</properties>
+		</profile>
+		<profile>
+			<id>prod</id>
+			<properties>
+				<active.profile>prod</active.profile>
+			</properties>
+		</profile>
+		<profile>
+			<id>cicd</id>
+			<properties>
+				<active.profile>cicd</active.profile>
+			</properties>
+		</profile>
+	</profiles>
+</project>
